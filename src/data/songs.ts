@@ -16,7 +16,7 @@ export const songs: Song[] = [
     title: 'KARMA',
     artist: 'Alien Stage',
     thumbnail: 'https://i3.ytimg.com/vi/dR1xVmGTUkE/maxresdefault.jpg',
-    sheetPath: '/genshinsheet/1.genshinsheet',
+    sheetPath: './genshinsheet/1.genshinsheet',
     difficulty: 'hard',
     pcNotes: `[FRW] Y rest(8) S D F D S [DHQ] E rest(12) S - [DGS] W rest(8)
 N A A A N [FNQ] E F rest(11) D [FRW] Y rest(8) S D F
@@ -144,7 +144,7 @@ fa2 la1 fa2 la1 fa2 la1 fa2 la1 fa2 la1 sol2 la1 fa2 la1 mi2 la1
     title: 'Wiege',
     artist: 'Alien Stage',
     thumbnail: 'https://i3.ytimg.com/vi/eYj-4CgYyGY/maxresdefault.jpg',
-    sheetPath: '/genshinsheet/2.genshinsheet',
+    sheetPath: './genshinsheet/2.genshinsheet',
     difficulty: 'hard',
     pcNotes: `[HRY] - R - R - [DJWY] W - [EHNQY] E Q [EHN] [FW] Q V
 [AFN] G [ACHN] rest(3) [AHNX] rest(3) Y rest(7) [BH] [FNS] - [BW] [FNRS] E [HN] [AD]

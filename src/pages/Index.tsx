@@ -10,7 +10,7 @@ const Index = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/iamage/photo_2025-07-27_01-45-33.jpg"
+            src="./iamage/photo_2025-07-27_01-45-33.jpg"
             alt="Genshin Impact Music"
             className="w-full h-full object-cover"
           />
@@ -22,9 +22,9 @@ const Index = () => {
           <div className="max-w-3xl">
             <div className="animate-fade-in">
               <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
-                Genshin Impact
+                Genshin
                 <span className="block text-primary bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                  Music Sheets
+                  Sheet Library
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
@@ -85,7 +85,7 @@ const Index = () => {
         <div className="container mx-auto px-6 py-12">
           <div className="text-center text-muted-foreground">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-foreground mb-2">Genshin Impact Music Sheets</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-2">Genshin Sheet Library</h3>
               <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary-glow rounded-full mx-auto"></div>
             </div>
             <p className="text-lg mb-4 max-w-2xl mx-auto">
