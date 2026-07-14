@@ -41,27 +41,24 @@ export function SheetModal({ song, isOpen, onClose }: SheetModalProps) {
         setTimeout(() => setCopiedMobile(false), 2000);
       }
       toast({
-        title: "Copied!",
+        title: 'Copied',
         description: `${type.toUpperCase()} notes copied to clipboard`,
       });
-    } catch (err) {
+    } catch {
       toast({
-        title: "Error",
-        description: "Failed to copy to clipboard",
-        variant: "destructive",
+        title: 'Error',
+        description: 'Failed to copy to clipboard',
+        variant: 'destructive',
       });
     }
   };
 
   const handleDownload = async () => {
     if (song.sheetPath) {
-      // Download the actual genshinsheet file
       try {
         const response = await fetch(song.sheetPath);
-        if (!response.ok) {
-          throw new Error('Failed to fetch sheet file');
-        }
-        
+        if (!response.ok) throw new Error('Failed to fetch sheet file');
+
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -71,31 +68,30 @@ export function SheetModal({ song, isOpen, onClose }: SheetModalProps) {
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        
+
         toast({
-          title: "Downloaded!",
-          description: "Sheet file downloaded successfully",
+          title: 'Downloaded',
+          description: 'Sheet file downloaded successfully',
         });
-      } catch (error) {
+      } catch {
         toast({
-          title: "Error",
-          description: "Failed to download sheet file",
-          variant: "destructive",
+          title: 'Error',
+          description: 'Failed to download sheet file',
+          variant: 'destructive',
         });
       }
     } else {
-      // Fallback: create JSON file from notes data
       const data = {
         title: song.title,
         artist: song.artist,
         pcNotes: song.pcNotes,
-        mobileNotes: song.mobileNotes
+        mobileNotes: song.mobileNotes,
       };
-      
+
       const blob = new Blob([JSON.stringify(data, null, 2)], {
-        type: 'application/json'
+        type: 'application/json',
       });
-      
+
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -104,10 +100,10 @@ export function SheetModal({ song, isOpen, onClose }: SheetModalProps) {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      
+
       toast({
-        title: "Downloaded!",
-        description: "Sheet file downloaded successfully",
+        title: 'Downloaded',
+        description: 'Sheet file downloaded successfully',
       });
     }
   };
@@ -121,17 +117,17 @@ export function SheetModal({ song, isOpen, onClose }: SheetModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={resetAndClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden bg-gradient-card border-border shadow-modal">
+      <DialogContent className="max-h-[90vh] max-w-4xl overflow-hidden border-border bg-gradient-card shadow-modal">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-primary flex items-center gap-3">
-            {song.title}
+          <DialogTitle className="flex items-center gap-3 text-2xl font-semibold text-foreground">
+            <span className="min-w-0 flex-1 font-[inherit]">{song.title}</span>
             <Button
               onClick={handleDownload}
               variant="outline"
               size="sm"
-              className="ml-auto hover:bg-primary/10 hover:border-primary"
+              className="ml-auto shrink-0 hover:border-primary hover:bg-primary/10"
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="mr-2 h-4 w-4" />
               Download .genshinsheet
             </Button>
           </DialogTitle>
@@ -140,38 +136,34 @@ export function SheetModal({ song, isOpen, onClose }: SheetModalProps) {
 
         <div className="mt-6">
           {viewMode === 'selection' && (
-            <div className="animate-scale-in">
-              <h3 className="text-lg font-semibold mb-6 text-center text-foreground">
+            <div>
+              <h3 className="mb-6 text-center text-lg font-semibold text-foreground">
                 Choose your platform
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card 
-                  className="p-8 cursor-pointer bg-gradient-card hover:bg-gradient-to-br hover:from-primary/10 hover:to-primary/5 border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow hover:scale-105 group"
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <Card
+                  className="cursor-pointer border-border/50 bg-gradient-card p-8 transition-colors duration-200 hover:border-primary/45 hover:bg-primary/5 group"
                   onClick={() => setViewMode('pc')}
                 >
                   <div className="text-center">
-                    <Monitor className="w-12 h-12 mx-auto mb-4 text-primary group-hover:text-primary-glow transition-colors duration-300" />
-                    <h4 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                    <Monitor className="mx-auto mb-4 h-12 w-12 text-primary" />
+                    <h4 className="mb-2 text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                       PC Version
                     </h4>
-                    <p className="text-muted-foreground text-sm">
-                      Optimized for keyboard input
-                    </p>
+                    <p className="text-sm text-muted-foreground">Keyboard notation</p>
                   </div>
                 </Card>
 
-                <Card 
-                  className="p-8 cursor-pointer bg-gradient-card hover:bg-gradient-to-br hover:from-primary/10 hover:to-primary/5 border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow hover:scale-105 group"
+                <Card
+                  className="cursor-pointer border-border/50 bg-gradient-card p-8 transition-colors duration-200 hover:border-primary/45 hover:bg-primary/5 group"
                   onClick={() => setViewMode('mobile')}
                 >
                   <div className="text-center">
-                    <Smartphone className="w-12 h-12 mx-auto mb-4 text-primary group-hover:text-primary-glow transition-colors duration-300" />
-                    <h4 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                    <Smartphone className="mx-auto mb-4 h-12 w-12 text-primary" />
+                    <h4 className="mb-2 text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                       Mobile Version
                     </h4>
-                    <p className="text-muted-foreground text-sm">
-                      Optimized for touch input
-                    </p>
+                    <p className="text-sm text-muted-foreground">Touch notation</p>
                   </div>
                 </Card>
               </div>
@@ -179,94 +171,78 @@ export function SheetModal({ song, isOpen, onClose }: SheetModalProps) {
           )}
 
           {viewMode === 'pc' && (
-            <div className="animate-slide-up">
-              <div className="flex items-center justify-between mb-4">
-                <Button
-                  onClick={() => setViewMode('selection')}
-                  variant="outline"
-                  size="sm"
-                  className="hover:bg-primary/10"
-                >
-                  ← Back to selection
-                </Button>
-                <Button
-                  onClick={() => handleCopy(song.pcNotes, 'pc')}
-                  variant="outline"
-                  size="sm"
-                  className="hover:bg-primary/10"
-                >
-                  {copiedPC ? (
-                    <>
-                      <Check className="w-4 h-4 mr-2 text-primary" />
-                      Copied!
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4 mr-2" />
-                      Copy PC Notes
-                    </>
-                  )}
-                </Button>
-              </div>
-              <Card className="p-6 bg-muted/20 border-border/30">
-                <h4 className="text-lg font-semibold mb-4 text-primary flex items-center gap-2">
-                  <Monitor className="w-5 h-5" />
-                  PC Notes
-                </h4>
-                <div className="max-h-96 overflow-y-auto overflow-x-auto rounded-md border border-border/20 bg-background/50 p-4">
-                  <pre className="text-sm font-mono text-foreground whitespace-pre-wrap leading-relaxed min-w-0">
-                    {song.pcNotes}
-                  </pre>
-                </div>
-              </Card>
-            </div>
+            <NotesPanel
+              label="PC Notes"
+              icon={<Monitor className="h-5 w-5" />}
+              notes={song.pcNotes}
+              copied={copiedPC}
+              onBack={() => setViewMode('selection')}
+              onCopy={() => handleCopy(song.pcNotes, 'pc')}
+            />
           )}
 
           {viewMode === 'mobile' && (
-            <div className="animate-slide-up">
-              <div className="flex items-center justify-between mb-4">
-                <Button
-                  onClick={() => setViewMode('selection')}
-                  variant="outline"
-                  size="sm"
-                  className="hover:bg-primary/10"
-                >
-                  ← Back to selection
-                </Button>
-                <Button
-                  onClick={() => handleCopy(song.mobileNotes, 'mobile')}
-                  variant="outline"
-                  size="sm"
-                  className="hover:bg-primary/10"
-                >
-                  {copiedMobile ? (
-                    <>
-                      <Check className="w-4 h-4 mr-2 text-primary" />
-                      Copied!
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4 mr-2" />
-                      Copy Mobile Notes
-                    </>
-                  )}
-                </Button>
-              </div>
-              <Card className="p-6 bg-muted/20 border-border/30">
-                <h4 className="text-lg font-semibold mb-4 text-primary flex items-center gap-2">
-                  <Smartphone className="w-5 h-5" />
-                  Mobile Notes
-                </h4>
-                <div className="max-h-96 overflow-y-auto overflow-x-auto rounded-md border border-border/20 bg-background/50 p-4">
-                  <pre className="text-sm font-mono text-foreground whitespace-pre-wrap leading-relaxed min-w-0">
-                    {song.mobileNotes}
-                  </pre>
-                </div>
-              </Card>
-            </div>
+            <NotesPanel
+              label="Mobile Notes"
+              icon={<Smartphone className="h-5 w-5" />}
+              notes={song.mobileNotes}
+              copied={copiedMobile}
+              onBack={() => setViewMode('selection')}
+              onCopy={() => handleCopy(song.mobileNotes, 'mobile')}
+            />
           )}
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+function NotesPanel({
+  label,
+  icon,
+  notes,
+  copied,
+  onBack,
+  onCopy,
+}: {
+  label: string;
+  icon: React.ReactNode;
+  notes: string;
+  copied: boolean;
+  onBack: () => void;
+  onCopy: () => void;
+}) {
+  return (
+    <div>
+      <div className="mb-4 flex items-center justify-between">
+        <Button onClick={onBack} variant="outline" size="sm" className="hover:bg-primary/10">
+          ← Back to selection
+        </Button>
+        <Button onClick={onCopy} variant="outline" size="sm" className="hover:bg-primary/10">
+          {copied ? (
+            <>
+              <Check className="mr-2 h-4 w-4 text-primary" />
+              Copied
+            </>
+          ) : (
+            <>
+              <Copy className="mr-2 h-4 w-4" />
+              Copy {label}
+            </>
+          )}
+        </Button>
+      </div>
+      <Card className="border-border/30 bg-muted/20 p-6">
+        <h4 className="mb-4 flex items-center gap-2 text-lg font-semibold text-primary">
+          {icon}
+          {label}
+        </h4>
+        <div className="max-h-96 overflow-y-auto overflow-x-auto rounded-md border border-border/20 bg-background/50 p-4">
+          <pre className="min-w-0 whitespace-pre-wrap font-mono text-sm leading-relaxed text-foreground">
+            {notes}
+          </pre>
+        </div>
+      </Card>
+    </div>
   );
 }
