@@ -15,7 +15,7 @@ export const songs: Song[] = [
     id: '1',
     title: "KARMA",
     artist: "Alien Stage",
-    thumbnail: 'https://i3.ytimg.com/vi/dR1xVmGTUkE/maxresdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/e8lSYc3WvJ8/maxresdefault.jpg',
     sheetPath: './genshinsheet/1.genshinsheet',
     difficulty: 'hard',
     pcNotes: `[FRW] Y rest(8) S D F D S [DHQ] E rest(12) S - [DGS] W rest(8)
@@ -143,7 +143,7 @@ fa2 la1 fa2 la1 fa2 la1 fa2 la1 fa2 la1 sol2 la1 fa2 la1 mi2 la1
     id: '2',
     title: "Wiege",
     artist: "Alien Stage",
-    thumbnail: 'https://i3.ytimg.com/vi/eYj-4CgYyGY/maxresdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/rrngM9DmDfk/maxresdefault.jpg',
     sheetPath: './genshinsheet/2.genshinsheet',
     difficulty: 'hard',
     pcNotes: `[HRY] - R - R - [DJWY] W - [EHNQY] E Q [EHN] [FW] Q V
@@ -225,7 +225,7 @@ re3 la1 (fa1+do2+sol2) la2 re1 (la1+fa2) re2 re1 (fa1+la1) (la1+fa2) (fa1+la1+re
     id: '3',
     title: "Se mettre sur son trente-et-un !",
     artist: "Hoyo-MiX",
-    thumbnail: 'https://i3.ytimg.com/vi/EN79SfbcvIE/maxresdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/EN79SfbcvIE/maxresdefault.jpg',
     sheetPath: './genshinsheet/3.genshinsheet',
     difficulty: 'medium',
     pcNotes: `[DN] D D D - D D D [FN] F F F - F F F
@@ -319,7 +319,7 @@ la1 sol1 - (do1+do2)`
     id: '4',
     title: "Ruler Of My Heart",
     artist: "Alien Stage",
-    thumbnail: 'https://i3.ytimg.com/vi/MLpK2oTahpw/maxresdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/VgPo3q01kbg/maxresdefault.jpg',
     sheetPath: './genshinsheet/4.genshinsheet',
     difficulty: 'hard',
     pcNotes: `[AC] D Q - [BC] - [EN] E E E [CEM] rest(3) [BC] - Q -
@@ -491,7 +491,7 @@ re3 - re1 do3 sol1 - (si2+si1+si3) - (do3+fa1) - mi1 - (mi2+si1) - re1 sol1
     id: '5',
     title: "CURE",
     artist: "Alien Stage",
-    thumbnail: 'https://i3.ytimg.com/vi/z-OjzweMxVM/maxresdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/SV9SwKd6J3w/maxresdefault.jpg',
     sheetPath: './genshinsheet/5.genshinsheet',
     difficulty: 'medium',
     pcNotes: `[GSZ] - B - [AG] B - [GS] - B [AG] - B - [GSZ] B
@@ -625,7 +625,7 @@ rest(3) do1 - do1 rest(3) sol1 do1 - la1 - do1 - sol1 - fa1`
     id: '6',
     title: "La vaguelette",
     artist: "Hoyo-Mix",
-    thumbnail: 'https://i3.ytimg.com/vi/kglEsR7bqAY/maxresdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/kglEsR7bqAY/maxresdefault.jpg',
     sheetPath: './genshinsheet/6.genshinsheet',
     difficulty: 'medium',
     pcNotes: `[JN] Q W T [BG] J Q T [GV] H Q E rest(8) [DX] F G
